@@ -1,0 +1,15 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+
+body {
+    background-color: darkcyan;
+    font-family: "Montserrat";
+    color: antiquewhite;
+}
+
+#pic {
+    font-size: 2em;
+}
+
+#profilePic {
+    height: 600px;
+}

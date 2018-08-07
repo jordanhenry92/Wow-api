@@ -25,14 +25,12 @@ request.send();
 
 // Use the data to populate the element (or whatever you want to do with it)
 
-// Create a function for this!!
-
-
-
+// Create array list of bosses and variables to calculate avg score
 var bosses = ["Garothi Worldbreaker", "Felhounds of Sargeras", "Antoran High Command", "The Defense of Eonar", "Portal Keeper Hasabel", "Imonar the Soulhunter", "Kin'garoth", "Varimathras", "The Coven of Shivarra", "Aggramar", "Argus the Unmaker"];
 var bossCount = 0;
 var bossTotal = 0;
 
+// Wait for response to return, then store in a variable (blizzData) that contains the JavaScript object converted from JSON. Then loop through boss list to populate
 request.onload = function() {
     var blizzData = request.response;
     for (var i = 0; i<bosses.length; i++) {
@@ -41,6 +39,7 @@ request.onload = function() {
     dumpPic.innerHTML = "Best perf. avg: " + (bossTotal/bossCount);
 }
 
+// Function to loop though all logs and record best historical percentile for each Mythic boss
 function perfPercentile(jsonObj, bossName) {
     var perf = 0;
     var para = document.createElement('p');
@@ -49,7 +48,6 @@ function perfPercentile(jsonObj, bossName) {
             if (jsonObj[i].percentile > perf) {
                 perf = jsonObj[i].percentile;
             }
-
         }
     }
     if (perf > 0) {
@@ -61,4 +59,6 @@ function perfPercentile(jsonObj, bossName) {
     para.textContent = bossName + ": " + perf;
     dumpDiv.appendChild(para);
 }
+
+
 
